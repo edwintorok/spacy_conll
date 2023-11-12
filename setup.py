@@ -1,7 +1,6 @@
 from pathlib import Path
 from setuptools import find_packages, setup
 
-from spacy_conll import __version__
 
 extras = {
     "pd": ["pandas"],
@@ -12,7 +11,6 @@ extras["dev"] = extras["all"] + ["pytest", "flake8", "isort", "black", "pygments
 
 setup(
     name="spacy_conll",
-    version=__version__,
     description="A custom pipeline component for spaCy that can convert any parsed Doc"
                 " and its sentences into CoNLL-U format. Also provides a command line entry point.",
     long_description=Path("README.md").read_text(encoding="utf-8"),
@@ -44,6 +42,9 @@ setup(
     install_requires=[
         "spacy>=3.0.1",
         "dataclasses;python_version<'3.7'"
+    ],
+    setup_requires=[
+      "setuptools>=46.4.0"
     ],
     extras_require=extras,
     entry_points={
